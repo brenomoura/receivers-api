@@ -1,5 +1,5 @@
 
-# transfeera-challenge
+# receivers-api
 
 Este projeto é uma aplicação desenvolvida utilizando conceitos de Domain-Driven Design (DDD), onde a estrutura é dividida em camadas de domínio, aplicação e infraestrutura para garantir um alto nível de desacoplamento.
  
