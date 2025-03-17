@@ -57,14 +57,7 @@ source  venv/bin/activate
 pip  install  -r  src/dev_requirements.txt
 ```
 ### 2 Configurando as Variáveis de Ambiente
-Crie o arquivo `.env`. Existe o arquivo modelo chamado `.env_template` na raiz do projeto para referência. Segue exemplo para melhor entendimento:
-```
-SECRET_KEY=<random key>
-NAME_DB=receiver_app
-USER_DB=admin
-PASSWORD_DB=1234
-ALLOWED_HOSTS=*
-```
+Crie o arquivo `.env`. Existe o arquivo modelo chamado `.env_template` para referência. Para a execução dos testes, é necessário colocar os valores `False` para a variável `DEBUG` e `dev` para `ENV`.
 
 ### 3. Configurando o Banco de Dados
 Certifique-se de que o banco de dados PostgreSQL está configurado e em execução conforme as configurações especificadas no arquivo `docker-compose.yaml`. Além disso, também é necessário rodar as migrações caso não tenha rodado:
