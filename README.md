@@ -1,5 +1,5 @@
 
-# transfeera-challenge
+# receivers-api
 
 Este projeto é uma aplicação desenvolvida utilizando conceitos de Domain-Driven Design (DDD), onde a estrutura é dividida em camadas de domínio, aplicação e infraestrutura para garantir um alto nível de desacoplamento.
  
@@ -30,7 +30,7 @@ ou
 ```
 ./run-containers.sh
 ```
-5. Aguarde até que todos os serviços sejam inicializados. Após a conclusão, a aplicação estará disponível e pronta para uso. OBS: O banco de dados será pré-populado com 30 registros de teste, além disso, para fins de teste, é possível popular com diferentes valores, isso através do comando: 
+5. Aguarde até que todos os serviços sejam inicializados. Após a conclusão, a aplicação estará disponível e pronta para uso. OBS: O banco de dados será pré-populado com 30 registros de teste, além disso, para fins de teste, é possível popular com diferentes valores, isso através do comando (para rodar esse comando, certifique-se de ter configurando o ambiente local, [conforme explicado na seção de execução dos testes](#executando-testes):
 ```
 python manage.py pre_populate_receivers -n <quantidade de registros desejado>
 ```
