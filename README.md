@@ -1,78 +1,79 @@
-
 # receivers-api
 
-Este projeto é uma aplicação desenvolvida utilizando conceitos de Domain-Driven Design (DDD), onde a estrutura é dividida em camadas de domínio, aplicação e infraestrutura para garantir um alto nível de desacoplamento.
- 
-## Estrutura do Projeto
+This project is an application developed using Domain-Driven Design (DDD) concepts, where the structure is divided into domain, application, and infrastructure layers to ensure a high level of decoupling.
 
--  **Domínio**: Esta camada contém as entidades de negócio e as regras de domínio da aplicação.
--  **Aplicação**: Aqui estão os serviços de aplicação que orquestram as operações de negócio, utilizando os elementos do domínio.
--  **Infraestrutura**: Responsável por integrar a aplicação com recursos externos, como bancos de dados, além de também disponibilizar os endereços para afetuar as requisições.
+## Project Structure
 
-## Tecnologias Utilizadas
-A linguagem de programação utilizada foi o Python, na sua versão 3.12. Além disso, foram utilizadas as seguintes tecnologias.
+- **Domain**: This layer contains the business entities and domain rules of the application.
+- **Application**: Here you will find the application services that orchestrate business operations using domain elements.
+- **Infrastructure**: Responsible for integrating the application with external resources, such as databases, and also providing endpoints to handle requests.
 
--  **Django-Ninja**: Framework para construção de APIs RESTful em Python, que permite desenvolver APIs de forma rápida e eficiente. [link](https://github.com/vitalik/django-ninja).
--  **PostgreSQL**: Banco de dados relacional utilizado para armazenar os dados da aplicação.
--  **Docker e Docker Compose**: Utilizados para containerizar a aplicação e seus serviços, garantindo um ambiente de desenvolvimento consistente e portátil.
+## Technologies Used
+The programming language used was Python, version 3.12. Additionally, the following technologies were employed:
 
-## Como Executar
+- **Django-Ninja**: A framework for building RESTful APIs in Python, enabling fast and efficient API development. [link](https://github.com/vitalik/django-ninja).
+- **PostgreSQL**: A relational database used to store application data.
+- **Docker and Docker Compose**: Used to containerize the application and its services, ensuring a consistent and portable development environment.
 
-Para executar a aplicação via Docker, siga os passos abaixo:
-1. Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina.
-2. Clone este repositório em sua máquina local.
-3. Navegue até o diretório raiz do projeto.
-4. Execute o comando abaixo para construir e iniciar os contêineres Docker:
+## How to Run
+
+To run the application via Docker, follow the steps below:
+1. Ensure Docker and Docker Compose are installed on your machine.
+2. Clone this repository to your local machine.
+3. Navigate to the project's root directory.
+4. Run the following command to build and start the Docker containers:
 ```
 docker-compose up --build
 ```
-ou
+or
 ```
 ./run-containers.sh
 ```
-5. Aguarde até que todos os serviços sejam inicializados. Após a conclusão, a aplicação estará disponível e pronta para uso. OBS: O banco de dados será pré-populado com 30 registros de teste, além disso, para fins de teste, é possível popular com diferentes valores, isso através do comando (para rodar esse comando, certifique-se de ter configurando o ambiente local, [conforme explicado na seção de execução dos testes](#executando-testes):
+5. Wait until all services are initialized. Once completed, the application will be available and ready for use. NOTE: The database will be pre-populated with 30 test records. Additionally, for testing purposes, you can populate it with different values using the following command (to run this command, ensure your local environment is configured [as explained in the testing section](#running-tests)):
 ```
-python manage.py pre_populate_receivers -n <quantidade de registros desejado>
+python manage.py pre_populate_receivers -n <desired number of records>
 ```
-6. Acesse a aplicação em [http://localhost:8000](http://localhost:8000) e comece a explorar suas funcionalidades.
+6. Access the application at [http://localhost:8000](http://localhost:8000) and start exploring its features.
 
-## Executando Testes
-Este projeto possui uma cobertura abrangente de testes, incluindo testes de unidade e testes de integração, para garantir o correto funcionamento das funcionalidades implementadas.
-Para executar os testes da aplicação utilizando o Pytest, siga os passos abaixo:
+## Running Tests
+This project includes comprehensive test coverage, including unit tests and integration tests, to ensure the correct functionality of implemented features.
+To run the tests using Pytest, follow the steps below:
 
-### 1. Configurando o Ambiente de Desenvolvimento Local
+### 1. Setting Up the Local Development Environment
 
-Certifique-se de ter o Python instalado em sua máquina (foi utilizado o Python na versão 3.12 nesse projeto). Em seguida, siga os passos abaixo para configurar o ambiente de desenvolvimento:
- 
-#### Criando e Ativando um Ambiente Virtual
- 
+Ensure Python is installed on your machine (Python version 3.12 was used in this project). Next, follow the steps below to set up the development environment:
+
+#### Creating and Activating a Virtual Environment
+
 ```bash
-python3.12  -m  venv  venv
-source  venv/bin/activate
+python3.12 -m venv venv
+source venv/bin/activate
 ```
 
-#### Instalando as Dependências de Desenvolvimento
- 
+#### Installing Development Dependencies
+
 ```bash
-pip  install  -r  src/dev_requirements.txt
+pip install -r src/dev_requirements.txt
 ```
-### 2 Configurando as Variáveis de Ambiente
-Crie o arquivo `.env`. Existe o arquivo modelo chamado `.env_template` para referência. Para a execução dos testes, é necessário colocar os valores `False` para a variável `DEBUG` e `dev` para `ENV`.
 
-### 3. Configurando o Banco de Dados
-Certifique-se de que o banco de dados PostgreSQL está configurado e em execução conforme as configurações especificadas no arquivo `docker-compose.yaml`. Além disso, também é necessário rodar as migrações caso não tenha rodado:
+### 2. Configuring Environment Variables
+Create the `.env` file. A template file named `.env_template` is provided for reference. For running tests, set the `DEBUG` variable to `False` and `ENV` to `dev`.
+
+### 3. Setting Up the Database
+Ensure the PostgreSQL database is configured and running according to the settings specified in the `docker-compose.yaml` file. Additionally, run the migrations if you haven't already:
 ```bash
 python src/manage.py migrate
 ```
-### 4. Executando os Testes
-Com o ambiente de desenvolvimento configurado e o banco de dados em execução, execute o seguinte comando para rodar os testes com o Pytest:
+
+### 4. Running the Tests
+With the development environment configured and the database running, execute the following command to run the tests with Pytest:
 ```bash
 pytest
 ```
-Isso executará todos os testes no diretório atual e subdiretórios, exibindo os resultados no terminal.
-Se desejar executar testes específicos ou personalizar a execução dos testes, consulte a [documentação do Pytest](https://docs.pytest.org/en/stable/contents.html) para obter mais informações.
+This will run all tests in the current directory and subdirectories, displaying results in the terminal.
+To run specific tests or customize test execution, refer to the [Pytest documentation](https://docs.pytest.org/en/stable/contents.html) for more details.
 
-## Documentação da API
+## API Documentation
 
-A API possui uma documentação Swagger, onde é possível visualizar e interagir com os endpoints disponíveis. A documentação pode ser acessada através do seguinte endereço:
+The API includes Swagger documentation, where you can view and interact with the available endpoints. The documentation can be accessed at:
 [http://localhost:8000/api/docs](http://localhost:8000/api/docs)
